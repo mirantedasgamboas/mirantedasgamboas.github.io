@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Links do Mirante das Gamboas</title>
+<meta name="description" content="Mirante das Gamboas · Hotel e Parque Aquático. Pacotes, pulseiras, Noites do Mirante e atendimento.">
+<meta property="og:title" content="Mirante das Gamboas · Hotel e Parque Aquático">
+<meta property="og:description" content="Pacotes, pulseiras do parque aquático, Noites do Mirante e atendimento pelo WhatsApp.">
+<meta name="theme-color" content="#1C8FD6">
+<link rel="preload" as="image" href="fundo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@500;600;700&display=swap">
+<style>
+  :root {
+    --sky: #DFF7FA;
+    --pool: #19B7C9;
+    --lagoon: #0A7E96;
+    --ocean: #0B4C7A;
+    --deep: #08304F;
+    --sun: #FFD23F;
+    --coral: #FF6B57;
+    --white: #FFFFFF;
+    --btn: #FD8A02;
+    --btn-2: #FCE461;
+    --btn-fg: #111111;
+
+    --bg: var(--sky);
+    --fg: var(--deep);
+    --muted: #2D6280;
+
+    color-scheme: light;
+    --font-display: "Fredoka", "Trebuchet MS", system-ui, sans-serif;
+    --font-body: "Nunito", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { overflow-x: hidden; }
+  body {
+    margin: 0;
+    background: #1C8FD6;
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.35;
+    padding-top: 28px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    min-height: 100vh;
+  }
+  /* foto de fundo fixa (pseudo-elemento: funciona também no iPhone) */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(8,48,79,.38) 0%, rgba(8,48,79,.10) 30%, rgba(8,48,79,.05) 60%, rgba(8,48,79,.35) 100%),
+      url("fundo.webp") center top / cover no-repeat;
+  }
+  .wrap {
+    position: relative;
+    max-width: 440px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* bolhas decorativas */
+  .bubbles { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+  .bubbles span {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,.7);
+    background: rgba(255,255,255,.18);
+  }
+  .wrap > *:not(.bubbles) { position: relative; z-index: 1; }
+
+  .top { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
+  .seal {
+    width: 196px; height: 196px;
+    border-radius: 32px;
+    background: #F7F5F2;
+    border: 4px solid var(--white);
+    box-shadow: 0 10px 28px rgba(8,48,79,.35);
+    overflow: hidden;
+  }
+  .seal img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .intro {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 14px 18px 16px;
+    border-radius: 20px;
+    background: rgba(8,48,79,.55);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.25);
+  }
+  .top h1 {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sun);
+    text-shadow: 0 1px 3px rgba(8,48,79,.8);
+  }
+  .top p {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--white);
+    text-shadow: 0 1px 2px rgba(8,48,79,.9), 0 2px 12px rgba(8,48,79,.6);
+    line-height: 1.3;
+    text-wrap: balance;
+    max-width: 28ch;
+  }
+
+  .links { display: flex; flex-direction: column; gap: 14px; padding: 0; margin: 0; list-style: none; }
+  .link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    min-height: 70px;
+    border-radius: 20px;
+    background: linear-gradient(100deg, var(--btn) 0%, var(--btn) 30%, var(--btn-2) 100%);
+    color: var(--btn-fg);
+    text-decoration: none;
+    box-shadow: 0 4px 0 #B85F00, 0 8px 18px rgba(8,48,79,.22);
+    transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+  }
+  .link:hover { filter: brightness(1.06); transform: translateY(-2px); }
+  .link:active { transform: translateY(1px); box-shadow: 0 2px 0 #B85F00; }
+  .link:focus-visible { outline: 3px solid var(--white); outline-offset: 3px; }
+
+  .link.has-badge { margin-top: 10px; }
+
+  .icon {
+    flex: none;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(255,255,255,.35);
+    color: var(--btn-fg);
+  }
+  .icon svg { width: 23px; height: 23px; display: block; }
+  .txt { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 2px; }
+  .label { font-family: var(--font-display); font-weight: 600; font-size: 19px; line-height: 1.15; }
+  .sub { font-size: 15px; font-weight: 700; color: var(--btn-fg); line-height: 1.25; }
+  .chev { flex: none; width: 18px; height: 18px; color: var(--btn-fg); }
+
+  .badge {
+    position: absolute;
+    top: -12px; right: 14px;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    white-space: nowrap;
+    box-shadow: 0 3px 8px rgba(8,48,79,.25);
+  }
+  .badge svg { width: 12px; height: 12px; display: block; }
+  .badge.black { background: #111111; color: var(--sun); border: 1.5px solid var(--sun); }
+  .badge.table { background: var(--white); color: var(--deep); border: 1.5px solid var(--deep); }
+
+  .foot { margin-top: 6px; text-align: center; }
+  .foot-text {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    text-shadow: 0 1px 3px rgba(8,48,79,.9);
+    padding-bottom: 8px;
+  }
+  .waves {
+    display: block;
+    height: 90px;
+    width: calc(100% + max(16px, env(safe-area-inset-left, 0px)) + max(16px, env(safe-area-inset-right, 0px)));
+    margin-left: calc(-1 * max(16px, env(safe-area-inset-left, 0px)));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .link { transition: none; }
+    .link:hover, .link:active { transform: none; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="bubbles" aria-hidden="true">
+    <span style="width:34px;height:34px;top:18px;left:4%"></span>
+    <span style="width:14px;height:14px;top:70px;left:16%"></span>
+    <span style="width:22px;height:22px;top:40px;right:8%"></span>
+    <span style="width:10px;height:10px;top:120px;right:20%"></span>
+  </div>
+
+  <header class="top">
+    <div class="seal">
+      <img src="logo.webp" width="400" height="400" alt="Complexo Turístico Mirante das Gamboas · Lazer tamanho família!">
+    </div>
+    <div class="intro">
+      <h1>Hotel · Parque Aquático</h1>
+      <p>Sol, piscina e diversão para toda a família. Escolha abaixo como podemos te ajudar.</p>
+    </div>
+  </header>
+
+  <ul class="links">
+    <!-- 1. Pacote All Inclusive -->
+    <li>
+      <a class="link pkg has-badge" id="link-all-inclusive" href="https://wa.link/yzmmyf" target="_blank" rel="noopener">
+        <span class="badge black"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"/></svg>Black Mirante</span>
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3v8M5 3v4a2 2 0 0 0 4 0V3M7 11v10"/><path d="M17 21V3c-2 1-3 3.5-3 7h3"/></svg>
+        </span>
+        <span class="txt">
+          <span class="label">Pacote All Inclusive</span>
+          <span class="sub">Hospedagem com tudo incluso</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </li>
+    <!-- 2. Pacote Pensão -->
+    <li>
+      <a class="link pkg has-badge" id="link-pensao" href="https://wa.link/l9d4pe" target="_blank" rel="noopener">
+        <span class="badge black"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.6-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.2l7.1-.6z"/></svg>Black Mirante</span>
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18h18M5 18v-1a7 7 0 0 1 14 0v1"/><path d="M12 8V6M10 6h4"/></svg>
+        </span>
+        <span class="txt">
+          <span class="label">Pacote Pensão</span>
+          <span class="sub">Hospedagem com refeições</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </li>
+    <!-- 3. Pacote Réveillon -->
+    <li>
+      <a class="link" id="link-reveillon" href="https://wa.link/9upo9a" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>
+        </span>
+        <span class="txt">
+          <span class="label">Pacote Réveillon</span>
+          <span class="sub">Celebre a virada no Mirante</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </li>
+    <!-- 4. Pacote Natal -->
+    <li>
+      <a class="link" id="link-natal" href="https://wa.link/fqd2ed" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l1 2.2 2.4.3-1.8 1.6.5 2.4L12 7.3 9.9 8.5l.5-2.4-1.8-1.6 2.4-.3z"/><path d="M12 9l-5 6h3l-4 5h12l-4-5h3z"/><path d="M12 20v2"/></svg>
+        </span>
+        <span class="txt">
+          <span class="label">Pacote Natal</span>
+          <span class="sub">Natal em família no Mirante</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </li>
+    <!-- 5. Pulseiras do Parque Aquático -->
+    <li>
+      <a class="link" id="link-pulseiras" href="https://wa.link/e3w7bw" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16c1.7 0 1.7 1.5 3.3 1.5S7 16 8.7 16s1.6 1.5 3.3 1.5S13.7 16 15.3 16s1.7 1.5 3.4 1.5S20.3 16 22 16"/><path d="M2 20c1.7 0 1.7 1.5 3.3 1.5S7 20 8.7 20s1.6 1.5 3.3 1.5S13.7 20 15.3 20s1.7 1.5 3.4 1.5S20.3 20 22 20"/><path d="M6 13V5a2 2 0 0 1 4 0M14 13V5a2 2 0 0 1 4 0M6 8h8M6 11h8"/></svg>
+        </span>
+        <span class="txt">
+          <span class="label">Adquira suas Pulseiras</span>
+          <span class="sub">Acesso ao Parque Aquático</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </li>
+    <!-- 6. Noites do Mirante -->
+    <li>
+      <a class="link has-badge" id="link-noites" href="https://wa.link/1mqvbs" target="_blank" rel="noopener">
+        <span class="badge table">Reserve sua Mesa</span>
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg>
+        </span>
+        <span class="txt">
+          <span class="label">Noites do Mirante</span>
+          <span class="sub">Com música ao vivo</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </li>
+    <!-- 7. Recepção do hotel -->
+    <li>
+      <a class="link service" id="link-recepcao" href="https://wa.link/p7uu6y" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17h16M6 17a6 6 0 0 1 12 0"/><path d="M12 9V8M10 8h4M3 20h18"/></svg>
+        </span>
+        <span class="txt">
+          <span class="label">Recepção do hotel</span>
+          <span class="sub">Fale com a nossa equipe</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </li>
+    <!-- 8. Tire suas dúvidas -->
+    <li>
+      <a class="link service" id="link-duvidas" href="https://wa.link/j5z4n7" target="_blank" rel="noopener">
+        <span class="icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M10 9a2 2 0 1 1 2.8 1.8c-.5.3-.8.7-.8 1.2M12 14h.01"/></svg>
+        </span>
+        <span class="txt">
+          <span class="label">Tire suas dúvidas</span>
+          <span class="sub">Atendimento pelo WhatsApp</span>
+        </span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+      </a>
+    </li>
+  </ul>
+
+  <footer class="foot">
+    <div class="foot-text">Mirante das Gamboas</div>
+  </footer>
+</main>
+<svg class="waves" viewBox="0 0 800 90" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 40 Q100 18 200 40 T400 40 T600 40 T800 40 V90 H0Z" fill="#19B7C9" opacity=".45"/>
+  <path d="M0 58 Q100 36 200 58 T400 58 T600 58 T800 58 V90 H0Z" fill="#0A7E96" opacity=".8"/>
+  <path d="M0 74 Q100 60 200 74 T400 74 T600 74 T800 74 V90 H0Z" fill="#0B4C7A"/>
+</svg>
+</body>
+</html>
